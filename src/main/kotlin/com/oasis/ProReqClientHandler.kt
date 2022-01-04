@@ -21,7 +21,7 @@ class ProReqClientHandler : ChannelInboundHandlerAdapter() {
     }
 
     override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
-        println("接收到服务端信息（proResp）：$msg")
+        println("接收到服务端信息（proResp）：\n$msg")
     }
 
     override fun channelReadComplete(ctx: ChannelHandlerContext?) {
