@@ -12,4 +12,5 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("io.netty:netty-all:4.1.72.Final")
+    implementation("com.google.protobuf:protobuf-java:3.19.1")
 }

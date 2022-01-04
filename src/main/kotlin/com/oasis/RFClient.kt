@@ -4,6 +4,8 @@ import io.netty.bootstrap.Bootstrap
 import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioSocketChannel
+import io.netty.handler.logging.LogLevel
+import io.netty.handler.logging.LoggingHandler
 
 class RFClient {
 
@@ -16,6 +18,7 @@ class RFClient {
             b.group(group)
                 .option(ChannelOption.TCP_NODELAY, true)
                 .channel(NioSocketChannel::class.java)
+                .handler(LoggingHandler(LogLevel.INFO))
                 .handler(ClientChannelHandler())
 
             val f = b.connect(host, port).sync()
