@@ -1,6 +1,6 @@
 package com.oasis
 
-import com.asia.protobuf.ProductReqOuterClass
+import com.asia.protobuf.ProductReqProto
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
 
@@ -11,8 +11,8 @@ class ProReqClientHandler : ChannelInboundHandlerAdapter() {
         ctx.flush()
     }
 
-    private fun proReq(): ProductReqOuterClass.ProductReq? {
-        return ProductReqOuterClass.ProductReq.newBuilder()
+    private fun proReq(): ProductReqProto.ProductReq? {
+        return ProductReqProto.ProductReq.newBuilder()
             .setReqId(1)
             .setUserName("Tom")
             .setProductName("Note")

@@ -1,19 +1,19 @@
 package com.oasis
 
-import com.asia.protobuf.ProductReqOuterClass
+import com.asia.protobuf.ProductReqProto
 
 object ProductReqProto {
 
-    fun encode(req: ProductReqOuterClass.ProductReq): ByteArray? {
+    fun encode(req: ProductReqProto.ProductReq): ByteArray? {
         return req.toByteArray()
     }
 
-    fun decode(body: ByteArray): ProductReqOuterClass.ProductReq? {
-        return ProductReqOuterClass.ProductReq.parseFrom(body)
+    fun decode(body: ByteArray): ProductReqProto.ProductReq? {
+        return ProductReqProto.ProductReq.parseFrom(body)
     }
 
-    private fun createSubscribeReq(): ProductReqOuterClass.ProductReq? {
-        return ProductReqOuterClass.ProductReq.newBuilder()
+    private fun createSubscribeReq(): ProductReqProto.ProductReq? {
+        return ProductReqProto.ProductReq.newBuilder()
             .setReqId(1)
             .setUserName("Tom")
             .setProductName("Note")

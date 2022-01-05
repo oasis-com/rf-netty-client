@@ -1,6 +1,6 @@
 package com.oasis
 
-import com.asia.protobuf.ProductRespOuterClass
+import com.asia.protobuf.ProductRespProto
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.protobuf.ProtobufDecoder
@@ -12,7 +12,7 @@ class ClientChannelHandler : ChannelInitializer<SocketChannel>() {
 
     override fun initChannel(ch: SocketChannel) {
         ch.pipeline().addLast(ProtobufVarint32FrameDecoder())
-        ch.pipeline().addLast(ProtobufDecoder(ProductRespOuterClass.ProductResp.getDefaultInstance()))
+        ch.pipeline().addLast(ProtobufDecoder(ProductRespProto.ProductResp.getDefaultInstance()))
         ch.pipeline().addLast(ProtobufVarint32LengthFieldPrepender())
         ch.pipeline().addLast(ProtobufEncoder())
 //        ch.pipeline().addLast(RFClientHandler())
