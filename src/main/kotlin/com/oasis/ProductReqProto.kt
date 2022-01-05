@@ -4,11 +4,11 @@ import com.asia.protobuf.ProductReqProto
 
 object ProductReqProto {
 
-    fun encode(req: ProductReqProto.ProductReq): ByteArray? {
+    private fun encode(req: ProductReqProto.ProductReq): ByteArray? {
         return req.toByteArray()
     }
 
-    fun decode(body: ByteArray): ProductReqProto.ProductReq? {
+    private fun decode(body: ByteArray): ProductReqProto.ProductReq? {
         return ProductReqProto.ProductReq.parseFrom(body)
     }
 
