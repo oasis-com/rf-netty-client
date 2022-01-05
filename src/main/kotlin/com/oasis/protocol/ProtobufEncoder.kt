@@ -1,14 +1,13 @@
 package com.oasis.protocol
 
 import com.asia.protobuf.ProductReqProto
-import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
-import io.netty.handler.codec.MessageToByteEncoder
+import io.netty.handler.codec.MessageToMessageEncoder
 
-class ProtobufEncoder : MessageToByteEncoder<ProductReqProto.ProductReq>() {
+class ProtobufEncoder : MessageToMessageEncoder<ProductReqProto.ProductReq>() {
 
-    override fun encode(ctx: ChannelHandlerContext, msg: ProductReqProto.ProductReq, out: ByteBuf) {
+    override fun encode(ctx: ChannelHandlerContext, msg: ProductReqProto.ProductReq, out: MutableList<Any>) {
         // 将对象转换为 byte
         val bArray = msg.toByteArray()
 
@@ -24,6 +23,6 @@ class ProtobufEncoder : MessageToByteEncoder<ProductReqProto.ProductReq>() {
         // 消息体包含我们要发送的数据
         buf.writeBytes(bArray)
 
-        out.writeBytes(buf)
+        out.add(buf)
     }
 }
