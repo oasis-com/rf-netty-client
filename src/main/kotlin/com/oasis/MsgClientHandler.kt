@@ -1,7 +1,6 @@
 package com.oasis
 
 import com.asia.protobuf.ProductReqProto
-import com.asia.protobuf.ProtoMsg
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
 
@@ -16,11 +15,8 @@ class MsgClientHandler : ChannelInboundHandlerAdapter() {
     override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
         println("接收到客户端消息: $msg")
 
-        if (msg is ProtoMsg.Message) {
-
-            val request = msg.messageRequest;
-
-            println("chatMsg, from ${request.from} , to ${request.to}, content ${request.content}")
+        if (msg is ProductReqProto.ProductReq) {
+            println("ok")
         }
     }
 
