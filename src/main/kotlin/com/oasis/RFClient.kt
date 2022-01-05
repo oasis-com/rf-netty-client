@@ -1,6 +1,7 @@
 package com.oasis
 
 import io.netty.bootstrap.Bootstrap
+import io.netty.buffer.PooledByteBufAllocator
 import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioSocketChannel
@@ -17,6 +18,8 @@ class RFClient {
             val b = Bootstrap()
             b.group(group)
                 .option(ChannelOption.TCP_NODELAY, true)
+                .option(ChannelOption.SO_KEEPALIVE, true)
+                .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
                 .channel(NioSocketChannel::class.java)
                 .handler(LoggingHandler(LogLevel.INFO))
                 .handler(ClientChannelHandler())
