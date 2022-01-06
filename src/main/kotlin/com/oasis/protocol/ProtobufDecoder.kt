@@ -44,12 +44,12 @@ class ProtobufDecoder : ByteToMessageDecoder() {
             val msg = ProductReqProto.ProductReq.parseFrom(inByte)
 
             if (msg != null) {
-                // 获取业务消息头
+                // protobuf body
                 out.add(msg)
             }
 
         } catch (e: Exception) {
-            println("${ctx.channel().remoteAddress()} decode failed.");
+            println("${ctx.channel().remoteAddress()} decode failed.")
             e.printStackTrace()
         }
     }
