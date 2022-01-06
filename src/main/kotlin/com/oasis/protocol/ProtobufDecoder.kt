@@ -44,7 +44,7 @@ class ProtobufDecoder : ByteToMessageDecoder() {
             val msg = ProductReqProto.ProductReq.parseFrom(inByte)
 
             if (msg != null) {
-                // body
+                // protobuf body
                 out.add(msg)
             }
 
